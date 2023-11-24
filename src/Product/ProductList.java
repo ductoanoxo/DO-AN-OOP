@@ -41,7 +41,7 @@ public class ProductList {
         System.out.println("------------------------------------------------------------------CLOTHING LIST------------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n",
-                "Product.Product ID", "Name", "Price", "Material", "Size", "Color", "Style");
+                "Product ID", "Name", "Price", "Material", "Size", "Color", "Style");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
 
         if (ProductList.isEmpty()) {
@@ -62,7 +62,7 @@ public class ProductList {
         System.out.println("----------------------------------------------------------------ACCESSORIES LIST-----------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-20s |\n",
-                "Product.Product ID", "Name", "Price", "Material", "Size", "Type");
+                "Product ID", "Name", "Price", "Material", "Size", "Type");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
 
         if (ProductList.isEmpty()) {
@@ -122,7 +122,7 @@ public class ProductList {
                     continue;
             }
             ProductList.get(ProductList.size() - 1).input(); // Gọi phương thức input() của sản phẩm cuối cùng
-            writeToFile("Database/Clothing.txt","Database/Accessories.txt");
+            writeToFile("src/Clothing.txt","src/Accessories.txt");
         }
 
 
@@ -140,11 +140,11 @@ public class ProductList {
             if (isMatchingProduct(product, choice, id)) {
                 ProductList.remove(product);
                 System.out.println("Product.Product has been deleted.");
-                writeToFile("Database/Clothing.txt","Database/Accessories.txt");
+                writeToFile("src/Clothing.txt","src/Accessories.txt");
                 return;
             }
         }
-        System.out.println("Product.Product with ID " + id + " not found.");
+        System.out.println("Product with ID " + id + " not found.");
     }
     public void find()
     {

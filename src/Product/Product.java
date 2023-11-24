@@ -68,9 +68,9 @@ public class Product {
         this.quantity = quantity;
     }
     public void input() {
-        System.out.print("Product.Product ID: ");
+        System.out.print("Product ID: ");
         productId = sc.nextLine();
-        System.out.print("Product.Product Name: ");
+        System.out.print("Product Name: ");
         productName = sc.nextLine();
         System.out.print("Price: ");
         price = sc.nextInt();

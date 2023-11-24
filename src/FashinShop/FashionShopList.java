@@ -31,7 +31,7 @@ public class FashionShopList {
                     continue;
 
             }
-        }while(choice != 2);
+        }while(choice != 3);
     }
     public void menuAdmin()
     {
@@ -139,14 +139,14 @@ public class FashionShopList {
                     choice = sc.nextInt();
                     switch (choice){
                         case 1:
-                        employeeList.writeToFile("Database/SaleAgent.txt","Database/StoreKeeper.txt");
+                        employeeList.writeToFile("src/SaleAgent.txt","src/StoreKeeper.txt");
                         break;
                         case 2:
-                        productList.writeToFile("Database/Clothing.txt","Database/Accessories.txt");
+                        productList.writeToFile("src/Clothing.txt","src/Accessories.txt");
                         break;
                         case 3 :
-                        employeeList.writeToFile("Person.SaleAgent.txt","Database/StoreKeeper.txt");
-                        productList.writeToFile("Database/Clothing.txt","Database/Accessories.txt");
+                        employeeList.writeToFile("src/SaleAgent.txt","src/StoreKeeper.txt");
+                        productList.writeToFile("src/Clothing.txt","src/Accessories.txt");
                         break;
                         default:
                             System.out.println("Error, try againt !.");
@@ -154,8 +154,8 @@ public class FashionShopList {
                     }
                     break;
                 case 8:
-                    employeeList.readFromFile("Database/SaleAgent.txt","Database/StoreKeeper.txt");
-                    productList.readFromFile("Database/Clothing.txt","Database/Accessories.txt");
+                    employeeList.readFromFile("src/SaleAgent.txt","src/StoreKeeper.txt");
+                    productList.readFromFile("src/Clothing.txt","src/Accessories.txt");
                     break;
                 case 9:
                     System.out.println("Exit !!!!");
@@ -206,10 +206,10 @@ public class FashionShopList {
                     productList.find();
                     break;
                 case 7:
-                    productList.readFromFile("Database/Clothing.txt","Database/Accessories.txt");
+                    productList.writeToFile("src/Clothing.txt","src/Accessories.txt");
                     break;
                 case 8:
-                    productList.readFromFile("Database/Clothing.txt","Database/Accessories.txt");
+                    productList.readFromFile("src/Clothing.txt","src/Accessories.txt");
                     break;
                 case 9:
                     System.out.println("Exit !!!!");

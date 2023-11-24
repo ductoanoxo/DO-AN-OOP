@@ -32,7 +32,7 @@ public class EmployeeList {
             }
             EmployeeList.get(i).input();
         }
-        writeToFile("Database/SaleAgent.txt","Database/StoreKeeper.txt");
+        writeToFile("src/SaleAgent.txt","src/StoreKeeper.txt");
     }
     public boolean isMatchingfound(Employee employee, int choice  , String id  )
     {
@@ -69,7 +69,7 @@ public class EmployeeList {
                 {
                     EmployeeList.remove(employee);
                     System.out.print("Person.Person.Employee has been remove ");
-                    writeToFile("Database/SaleAgent.txt","Database/StoreKeeper.txt");
+                    writeToFile("src/SaleAgent.txt","src/StoreKeeper.txt");
                 }
             }
     }
@@ -95,7 +95,7 @@ public class EmployeeList {
             }
             EmployeeList.get(EmployeeList.size() - 1).input();
         }
-        writeToFile("Database/SaleAgent.txt","Database/StoreKeeper.txt");
+        writeToFile("src/SaleAgent.txt","src/StoreKeeper.txt");
     }
     public void editEmployeebyid() {
         System.out.println("What kind of employee do you want to Edit?");
