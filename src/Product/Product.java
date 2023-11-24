@@ -1,3 +1,5 @@
+package Product;
+
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
@@ -65,18 +67,17 @@ public class Product {
         this.price = price;
         this.quantity = quantity;
     }
-
     public void input() {
-        System.out.print("Product ID: ");
+        System.out.print("Product.Product ID: ");
         productId = sc.nextLine();
-        System.out.print("Product Name: ");
+        System.out.print("Product.Product Name: ");
         productName = sc.nextLine();
         System.out.print("Price: ");
         price = sc.nextInt();
         System.out.print("Quantity: ");
         quantity = sc.nextInt();
         sc.nextLine();
-        System.out.println("Size");
+        System.out.print("Size");
         size = sc.nextLine();
     }
 

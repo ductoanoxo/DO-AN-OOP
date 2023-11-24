@@ -1,3 +1,5 @@
+package Product;
+
 import java.util.Scanner;
 
 public class Accessories extends Product {
@@ -35,6 +37,7 @@ public class Accessories extends Product {
     public String getMaterial() {
         return material;
     }
+    @Override
     public void input(){
         super.input();
         System.out.print("Material :");
@@ -50,6 +53,11 @@ public class Accessories extends Product {
     @Override
     public String toString() {
         return super.toString() +"Material :"+ material + comba +"Type :"+type+"\n";
+    }
+    @Override
+    public String getFileLine()
+    {
+        return super.getFileLine() + material + comba +type+"\n";
     }
     public void Parse(String line)
     {

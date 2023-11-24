@@ -1,3 +1,5 @@
+package Product;
+
 import javax.swing.text.Style;
 
 public class Clothing extends Product {
@@ -39,6 +41,7 @@ public class Clothing extends Product {
         this.color = color;
         this.style = style;
     }
+    @Override
     public void input(){
         super.input();
         System.out.print("Material :");
@@ -56,6 +59,7 @@ public class Clothing extends Product {
     public String toString() {
         return super.toString() +"Material :"+ material + comba+"Color :"+color + comba +"Style :"+style+"\n";
     }
+    @Override
     public String getFileLine()
     {
         return super.getFileLine() + material + comba + color + comba +style+"\n";

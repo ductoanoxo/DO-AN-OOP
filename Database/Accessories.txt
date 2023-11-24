@@ -1,0 +1,6 @@
+1,Nhẫn,20000,1,M,Bạc,Nhẫn trái tim
+
+2,Dây chuyền,20000,1,M,Bạc,Dây chuyền rồng
+
+3,Bông tai,2000,2,M,Vàng,Bông tai pandora
+

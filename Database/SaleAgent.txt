@@ -1,0 +1,4 @@
+1,Tra Duc Toan,Nam,D7/23,0965158329,Sáng,2000,6
+
+2,Nguyễn Lê Nhật Minh,Nam,abc,0973473473,Chiều,2000,6
+
