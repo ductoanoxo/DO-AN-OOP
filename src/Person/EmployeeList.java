@@ -15,15 +15,15 @@ public class EmployeeList {
         int quantity = sc.nextInt();
         for ( int i = 0 ; i < quantity;i++)
         {
-            System.out.println("Select employee type (1: Person.SaleAgent, 2: Person.Storekeeper)");
+            System.out.println("Select employee type (1: SaleAgent, 2: Storekeeper)");
             int choice = sc.nextInt();
             switch (choice)
             {
                 case 1:
-                    EmployeeList.add(i,new SaleAgent());
+                    EmployeeList.add(new SaleAgent());
                     break;
                 case 2 :
-                    EmployeeList.add(i, new Storekeeper());
+                    EmployeeList.add( new Storekeeper());
                     break;
                 default:
                     System.out.println("Error, try againt !.");
@@ -32,7 +32,7 @@ public class EmployeeList {
             }
             EmployeeList.get(i).input();
         }
-        writeToFile("src/SaleAgent.txt","src/StoreKeeper.txt");
+        writeToFile("SaleAgent.txt","StoreKeeper.txt");
     }
     public boolean isMatchingfound(Employee employee, int choice  , String id  )
     {
@@ -69,7 +69,7 @@ public class EmployeeList {
                 {
                     EmployeeList.remove(employee);
                     System.out.print("Person.Person.Employee has been remove ");
-                    writeToFile("src/SaleAgent.txt","src/StoreKeeper.txt");
+                    writeToFile("SaleAgent.txt","StoreKeeper.txt");
                 }
             }
     }
@@ -95,7 +95,7 @@ public class EmployeeList {
             }
             EmployeeList.get(EmployeeList.size() - 1).input();
         }
-        writeToFile("src/SaleAgent.txt","src/StoreKeeper.txt");
+        writeToFile("SaleAgent.txt","StoreKeeper.txt");
     }
     public void editEmployeebyid() {
         System.out.println("What kind of employee do you want to Edit?");

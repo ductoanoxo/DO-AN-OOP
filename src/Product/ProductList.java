@@ -122,7 +122,7 @@ public class ProductList {
                     continue;
             }
             ProductList.get(ProductList.size() - 1).input(); // Gọi phương thức input() của sản phẩm cuối cùng
-            writeToFile("src/Clothing.txt","src/Accessories.txt");
+            writeToFile("Clothing.txt","Accessories.txt");
         }
 
 
@@ -140,7 +140,7 @@ public class ProductList {
             if (isMatchingProduct(product, choice, id)) {
                 ProductList.remove(product);
                 System.out.println("Product.Product has been deleted.");
-                writeToFile("src/Clothing.txt","src/Accessories.txt");
+                writeToFile("Clothing.txt","Accessories.txt");
                 return;
             }
         }

@@ -139,14 +139,14 @@ public class FashionShopList {
                     choice = sc.nextInt();
                     switch (choice){
                         case 1:
-                        employeeList.writeToFile("src/SaleAgent.txt","src/StoreKeeper.txt");
+                        employeeList.writeToFile("SaleAgent.txt","StoreKeeper.txt");
                         break;
                         case 2:
-                        productList.writeToFile("src/Clothing.txt","src/Accessories.txt");
+                        productList.writeToFile("Clothing.txt","Accessories.txt");
                         break;
                         case 3 :
-                        employeeList.writeToFile("src/SaleAgent.txt","src/StoreKeeper.txt");
-                        productList.writeToFile("src/Clothing.txt","src/Accessories.txt");
+                        employeeList.writeToFile("SaleAgent.txt","StoreKeeper.txt");
+                        productList.writeToFile("Clothing.txt","Accessories.txt");
                         break;
                         default:
                             System.out.println("Error, try againt !.");
@@ -154,8 +154,8 @@ public class FashionShopList {
                     }
                     break;
                 case 8:
-                    employeeList.readFromFile("src/SaleAgent.txt","src/StoreKeeper.txt");
-                    productList.readFromFile("src/Clothing.txt","src/Accessories.txt");
+                    employeeList.readFromFile("SaleAgent.txt","StoreKeeper.txt");
+                    productList.readFromFile("Clothing.txt","Accessories.txt");
                     break;
                 case 9:
                     System.out.println("Exit !!!!");
@@ -206,10 +206,10 @@ public class FashionShopList {
                     productList.find();
                     break;
                 case 7:
-                    productList.writeToFile("src/Clothing.txt","src/Accessories.txt");
+                    productList.writeToFile("Clothing.txt","Accessories.txt");
                     break;
                 case 8:
-                    productList.readFromFile("src/Clothing.txt","src/Accessories.txt");
+                    productList.readFromFile("Clothing.txt","Accessories.txt");
                     break;
                 case 9:
                     System.out.println("Exit !!!!");

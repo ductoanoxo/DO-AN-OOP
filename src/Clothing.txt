@@ -1,6 +1,0 @@
-1,Áo,50000,1,M,Vải dù,Vàng,Áo con cọp
-
-2,Quần,50000,1,M,Xanh,Đen,Quần cargo
-
-3,Áo khoác,20000,2,M,Vải dù,Đen xanh,Áo khoác hàn quốc
-
