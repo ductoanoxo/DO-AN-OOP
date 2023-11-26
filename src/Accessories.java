@@ -1,5 +1,3 @@
-package Product;
-
 import java.util.Scanner;
 
 public class Accessories extends Product {

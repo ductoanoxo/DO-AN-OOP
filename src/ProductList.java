@@ -1,5 +1,3 @@
-package Product;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -40,8 +38,8 @@ public class ProductList {
     public void display() {
         System.out.println("------------------------------------------------------------------CLOTHING LIST------------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n",
-                "Product ID", "Name", "Price", "Material", "Size", "Color", "Style");
+        System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n",
+                "Product ID", "Name", "Price", "Material", "Size", "Color", "Style","Quantity");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
 
         if (ProductList.isEmpty()) {
@@ -50,9 +48,9 @@ public class ProductList {
             for (Product product : ProductList) {
                 if (product instanceof Clothing) {
                     Clothing clothing = (Clothing) product;
-                    System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n",
+                    System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n",
                             clothing.getProductId(), clothing.getProductName(),
-                            clothing.getPrice(), clothing.getMaterial(), clothing.getSize(), clothing.getColor(),clothing.getStyle(), "");
+                            clothing.getPrice(), clothing.getMaterial(), clothing.getSize(), clothing.getColor(),clothing.getStyle(),clothing.getQuantity(), "");
                 }
             }
         }
@@ -61,8 +59,8 @@ public class ProductList {
 
         System.out.println("----------------------------------------------------------------ACCESSORIES LIST-----------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-20s |\n",
-                "Product ID", "Name", "Price", "Material", "Size", "Type");
+        System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-20s | %-15s |\n",
+                "Product ID", "Name", "Price", "Material", "Size", "Type","Quantity");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
 
         if (ProductList.isEmpty()) {
@@ -71,9 +69,9 @@ public class ProductList {
             for (Product product : ProductList) {
                 if (product instanceof Accessories) {
                     Accessories accessories = (Accessories) product;
-                    System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-20s |\n",
+                    System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-20s | %-15s |\n",
                             accessories.getProductId(), accessories.getProductName(),
-                            accessories.getPrice(), accessories.getMaterial(), accessories.getSize(), accessories.getType());
+                            accessories.getPrice(), accessories.getMaterial(), accessories.getSize(), accessories.getType(),accessories.getQuantity());
                 }
             }
         }
@@ -139,7 +137,7 @@ public class ProductList {
         for (Product product : ProductList) {
             if (isMatchingProduct(product, choice, id)) {
                 ProductList.remove(product);
-                System.out.println("Product.Product has been deleted.");
+                System.out.println("Product has been deleted.");
                 writeToFile("Clothing.txt","Accessories.txt");
                 return;
             }
@@ -202,26 +200,26 @@ public class ProductList {
         }
     }
 
-    public void readFromFile(String clothingFileName, String accessoriesFileName) {
-        try (BufferedReader clothingReader = new BufferedReader(new FileReader(clothingFileName));
-             BufferedReader accessoriesReader = new BufferedReader(new FileReader(accessoriesFileName))) {
+    public void readFromFile(String ClothingFileName, String AccessoriesFileName) {
+        try (BufferedReader salegentReader = new BufferedReader(new FileReader(ClothingFileName));
+             BufferedReader storekeeperReader = new BufferedReader(new FileReader(AccessoriesFileName))) {
 
             // Read clothing file
-            String clothingLine;
-            while ((clothingLine = clothingReader.readLine()) != null) {
-                if (!clothingLine.isEmpty()) {
+            String clline;
+            while ((clline = salegentReader.readLine()) != null) {
+                if (!clline.isEmpty()) {
                     Clothing cl = new Clothing();
-                    cl.Parse(clothingLine);
+                    cl.Parse(clline);
                     ProductList.add(cl);
                 }
             }
 
             // Read accessories file
-            String accessoriesLine;
-            while ((accessoriesLine = accessoriesReader.readLine()) != null) {
-                if (!accessoriesLine.isEmpty()) {
+            String acline;
+            while ((acline = storekeeperReader.readLine()) != null) {
+                if (!acline.isEmpty()) {
                     Accessories ac = new Accessories();
-                    ac.Parse(accessoriesLine);
+                    ac.Parse(acline);
                     ProductList.add(ac);
                 }
             }

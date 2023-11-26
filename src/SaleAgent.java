@@ -1,5 +1,3 @@
-package Person;
-
 public class SaleAgent extends Employee {
     private int productquantity;
     String comba=",";

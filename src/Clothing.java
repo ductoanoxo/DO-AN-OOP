@@ -1,7 +1,3 @@
-package Product;
-
-import javax.swing.text.Style;
-
 public class Clothing extends Product {
     private String material;
     private String color;

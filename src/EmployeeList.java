@@ -1,5 +1,3 @@
-package Person;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -68,7 +66,7 @@ public class EmployeeList {
                 if (isMatchingfound(employee,choice,id))
                 {
                     EmployeeList.remove(employee);
-                    System.out.print("Person.Person.Employee has been remove ");
+                    System.out.print("Person.Employee has been remove ");
                     writeToFile("SaleAgent.txt","StoreKeeper.txt");
                 }
             }
@@ -117,7 +115,7 @@ public class EmployeeList {
         System.out.println("------------------------------------------------------------------SALEAGENT LIST------------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-20s |\n",
-                "ID", "Name", "Sex", "Address", "Phone number", "Work shift", "Salary","Product.Product quantity");
+                "ID", "Name", "Sex", "Address", "Phone number", "Work shift", "Salary","Product quantity");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
 
         if (EmployeeList.isEmpty()) {

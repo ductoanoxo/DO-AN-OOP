@@ -1,2 +1,2 @@
-1,Áo,2000,1,M,Bạc,Trắng,Áo heo
-
+1,Áo,2000,4,M,Bạc,Trắng,Áo heo
+2,Áo,2000,4,M,Bạc,Trắng,Áo heo

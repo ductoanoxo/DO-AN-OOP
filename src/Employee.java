@@ -1,7 +1,4 @@
-package Person;
-
-import java.util.*;
-public abstract class Employee extends Person {
+public  class Employee extends Person {
     public String getWorkshift() {
         return Workshift;
     }

@@ -1,5 +1,3 @@
-package Person;
-
 import java.util.*;
 public class Storekeeper extends Employee {
     Scanner sc = new Scanner(System.in);

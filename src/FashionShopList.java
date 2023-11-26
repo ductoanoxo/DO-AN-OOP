@@ -1,37 +1,43 @@
-package FashinShop;
-import Product.*;
-import Person.*;
 import java.util.*;
 public class FashionShopList {
     Scanner sc = new Scanner(System.in);
     EmployeeList employeeList = new EmployeeList();
     ProductList productList = new ProductList();
+    CustomerList customerList = new CustomerList();
+    Shopping shopping = new Shopping();
     int choose;
     int choice;
+
+
     public void menu()
     {
         do {
             System.out.println("Who do you want to access");
             System.out.println("1. Admin");
             System.out.println("2. Employee");
-            System.out.println("3. Exit");
+            System.out.println("3. Customer");
+            System.out.println("4. Exit");
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
                     menuAdmin();
                     break;
-                case 2 :
+                case 2:
                     menuEmployee();
                     break;
                 case 3:
+                    shopping.readshop();
+                    shopping.menu();
+                    choice = 3; // Update choice to exit the loop
+                    break;
+                case 4:
                     System.out.println("Exit !!!!");
                     break;
                 default:
-                    System.out.println("Error, try againt !.");
+                    System.out.println("Error, try again!");
                     continue;
-
             }
-        }while(choice != 3);
+        } while (choice != 4);
     }
     public void menuAdmin()
     {
@@ -174,8 +180,8 @@ public class FashionShopList {
         Scanner sc = new Scanner(System.in);
 
         do {
-            System.out.println("1. Input");
-            System.out.println("2. Output");
+            System.out.println("1. Input ");
+            System.out.println("2. Output ");
             System.out.println("3. Add");
             System.out.println("4. Edit by Id");
             System.out.println("5. Delete");
@@ -188,7 +194,20 @@ public class FashionShopList {
 
             switch (choose) {
                 case 1:
-                    productList.input();
+                    System.out.println("1. Customer");
+                    System.out.println("2. Product");
+                    choice = sc.nextInt();
+                    switch (choice){
+                        case 1:
+                            customerList.input();
+                            break;
+                        case 2:
+                            productList.input();
+                            break;
+                        default:
+                            System.out.println("Error, try againt !.");
+                            continue;
+                    }
                     break;
                 case 2:
                     productList.display();

@@ -1,5 +1,3 @@
-package Product;
-
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;

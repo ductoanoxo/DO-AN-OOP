@@ -1,5 +1,3 @@
-package Person;
-
 import java.util.*;
 
 public class Person {
@@ -100,7 +98,7 @@ public class Person {
             Address = (params[3]);
             PhoneNumber = params[4];
         }
-        catch (ArrayIndexOutOfBoundsException ex)
+        catch (ArrayIndexOutOfBoundsException ignored)
         {
         }finally {
 
