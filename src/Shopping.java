@@ -5,7 +5,7 @@ public class Shopping {
     private int choice;
     ArrayList<Product> shoppingList = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
-        ProductList productList = new ProductList();
+    ProductList productList = new ProductList();
 
     ArrayList<Bill>billList = new ArrayList<>();
     CustomerList customerList = new CustomerList();
@@ -16,7 +16,7 @@ public class Shopping {
     }
 
     public void menushop()
-    {readshop();
+    {   readshop();
         do {
             System.out.println("Welcome to my fashion shop <3");
             System.out.println("1. Buy");
@@ -90,11 +90,11 @@ public class Shopping {
                     System.out.println("Error, try again!.");
             }
 
-            // Check if the user wants to continue shopping
+            // nếu biến cntinueShopping còn true thì tiếp tục
             if (continueShopping) {
                 System.out.print("Do you want to continue shopping? (yes/no): ");
-                String continueChoice = sc.next().toLowerCase();
-                if (continueChoice.equals("no")) {
+                String continueChoice = sc.next().toLowerCase(); //  Đọc phản hồi từ người dùng và chuyển đổi thành chữ thường để kiểm tra dễ dàng hơn.
+                if (continueChoice.equals("no")) { // nhập gì cũng sẽ tiếp tục nhưng khi nhập no thì
                     continueShopping = false;
                     customerList.input();
                     createBill();
@@ -102,7 +102,7 @@ public class Shopping {
                     System.out.println("Thank you for shopping!");
                 }
             }
-        } while (continueShopping);
+        } while (continueShopping); // dừng lại khi nào biến continueShopping == false
     }
 
     public void buyClothing() {
@@ -115,12 +115,12 @@ public class Shopping {
 
         for (Product product : productList.ProductList) {
 
-            if (product.getProductId().equals(id) && product instanceof Clothing) {
-                int updatedQuantity = product.getQuantity() - quantity;
-                if (updatedQuantity >= 0) {
-                    if (!shoppingList.contains(product)) {
-                        product.setQuantity(updatedQuantity);
-                        shoppingList.add(product);
+            if (product.getProductId().equals(id) && product instanceof Clothing) { // kiểu tra xem có giống id là sản phẩm đó có thuộc clothing không
+                int updatedQuantity = product.getQuantity() - quantity; // tính toán số lượng còn lại sau khi mua
+                if (updatedQuantity >= 0) { // Kiểm tra xem có đủ số lượng còn lại để mua hay không.
+                    if (!shoppingList.contains(product)) { // Kiểm tra xem chuỗi đã chứa chuỗi con chưa  nếu chưa thì thêm vào
+                        product.setQuantity(updatedQuantity); // set số lượng lại
+                        shoppingList.add(product); // thêm vào giỏ hàng
                         System.out.println("Clothing added to the shopping list.");
                     } else {
                         System.out.println("This clothing is already in the shopping list.");
@@ -179,12 +179,10 @@ public class Shopping {
                 String producttype ="Clothing";
                 // Thêm thông tin vào đối tượng Bill
 
-
-                String employeeId = bill.getEmployeeId();
-                bill.setEmployeeId(employeeId);
-                bill.setProductid(String.valueOf(productId));
+                bill.getEmployeeId();
+                bill.setProductid(productId);
                 bill.setProducttype(producttype);
-                bill.setQuantity(String.valueOf(quantity));
+                bill.getQuantity();
 
                 // Thêm đối tượng Bill vào danh sách hoặc làm điều gì đó khác với nó
                 billList.add(bill);
@@ -194,11 +192,10 @@ public class Shopping {
                 // Lấy thông tin từ mỗi phần tử
                 String producttype ="Accessories";
                 // Thêm thông tin vào đối tượng Bill
-                String employeeId = bill.getEmployeeId();
-                bill.setEmployeeId(employeeId);
-                bill.setProductid(String.valueOf(productId));
+                bill.getEmployeeId();
+                bill.setProductid(productId);
                 bill.setProducttype(producttype);
-                bill.setQuantity(String.valueOf(quantity));
+                bill.getQuantity();
 
                 // Thêm đối tượng Bill vào danh sách hoặc làm điều gì đó khác với nó
                 billList.add(bill);

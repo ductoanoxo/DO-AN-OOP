@@ -4,7 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class CustomerList {
+public class CustomerList implements method {
     ArrayList<Customer> CustomerList = new ArrayList<>();
     Scanner sc = new Scanner (System.in);
     public void input()
@@ -16,28 +16,45 @@ public class CustomerList {
     }
     public void find()
     {
-        System.out.print("Enter id :");
-        String id = sc.nextLine();
-        for (Customer customer : CustomerList)
-        {
-            if (customer.getPersonId().equals(id))
-            {
-                customer.display();
+        boolean idFound = false;
+        do {
+            System.out.print("Enter id :");
+            String id = sc.nextLine();
+            for (Customer customer : CustomerList) {
+                if (customer.getPersonId().equals(id)) {
+                    customer.display();
+                    idFound = true;
+                }
             }
-        }
-    }
-    public void Delete()
-    {
-        System.out.print("Enter id :");
-        String id = sc.nextLine();
-        for (Customer customer : CustomerList)
-        {
-            if (customer.getPersonId().equals(id))
-            {
-                CustomerList.remove(customer);
+            if (!idFound) {
+                System.out.println("Employee with ID " + id + " not found. Please try again.");
             }
-        }
+        }while (!idFound);
     }
+    public void delete() {
+        boolean idFound = false;
+
+        do {
+            System.out.print("Enter ID: ");
+            String id = sc.nextLine();
+            idFound = false;
+
+            for (Customer customer : CustomerList) {
+                if (customer.getPersonId().equals(id)) {
+                    CustomerList.remove(customer);
+                    idFound = true;
+                    writeToFile("Customer.txt");
+                    break; // Thoát khỏi vòng lặp khi tìm thấy ID
+                }
+            }
+
+            if (!idFound) {
+                System.out.println("Customer with ID " + id + " not found. Please try again.");
+            }
+
+        } while (!idFound);
+    }
+
     public void add()
     {
         System.out.print("How many customer u want to add?");
@@ -47,16 +64,32 @@ public class CustomerList {
             CustomerList.add(new Customer());
             CustomerList.get(CustomerList.size()-1).input();
         }
+        writeToFile("Customer.txt");
     }
-    public void editById()
-    {
-        System.out.print("Enter id :");
-        String id = sc.nextLine();
-        for (Customer customer : CustomerList)
-        {
-            customer.input();
-        }
+    public void editById() {
+        boolean idFound = false;
+
+        do {
+            System.out.print("Enter ID: ");
+            String id = sc.nextLine();
+            idFound = false;
+
+            for (Customer customer : CustomerList) {
+                if (customer.getPersonId().equals(id)) {
+                    customer.input();
+                    idFound = true;
+                    break; // Thoát khỏi vòng lặp khi tìm thấy ID
+                }
+            }
+
+            if (!idFound) {
+                System.out.println("Customer with ID " + id + " not found. Please try again.");
+            }
+
+        } while (!idFound);
     }
+
+
     public void writeToFile(String customerfile) {
         try {
             // Xóa toàn bộ nội dung của tệp cũ

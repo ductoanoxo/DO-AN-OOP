@@ -1,12 +1,12 @@
 public class Bill extends BillDetails {
     private String employeeId;
-    private String quantity;
+    private int quantity;
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 

@@ -15,6 +15,13 @@ public class FashionShopList {
         productList.display();
         customerList.display();
     }
+    public void readE()
+    {
+        productList.readFromFile("Clothing.txt", "Accessories.txt");
+        customerList.readFromFile("Customer.txt");
+        productList.display();
+        customerList.display();
+    }
     public void menu()
     {
         do {
@@ -72,10 +79,12 @@ public class FashionShopList {
                 case 2:
                     productList.display();
                     employeeList.display();
+                    customerList.display();
                     break;
                 case 3:
                     System.out.println("1. Add employee");
                     System.out.println("2. Add product");
+                    System.out.println("3. Add customer");
                     choice = sc.nextInt();
                     switch (choice){
                         case 1:
@@ -83,6 +92,9 @@ public class FashionShopList {
                             break;
                         case 2:
                             productList.add();
+                            break;
+                        case 3:
+                            customerList.add();
                             break;
                         default:
                             System.out.println("Error, try againt !.");
@@ -92,6 +104,7 @@ public class FashionShopList {
                 case 4:
                     System.out.println("1. Edit employee");
                     System.out.println("2. Edit product");
+                    System.out.println("3. Edit customer");
                     choice = sc.nextInt();
                     switch (choice){
                         case 1:
@@ -99,6 +112,9 @@ public class FashionShopList {
                             break;
                         case 2:
                             productList.editbyid();
+                            break;
+                        case 3:
+                            customerList.editById();
                             break;
                         default:
                             System.out.println("Error, try againt !.");
@@ -108,6 +124,7 @@ public class FashionShopList {
                 case 5:
                     System.out.println("1. Delete employee");
                     System.out.println("2. Delete product");
+                    System.out.println("3. Delete customer");
                     choice = sc.nextInt();
                     switch (choice){
                         case 1:
@@ -115,6 +132,9 @@ public class FashionShopList {
                             break;
                         case 2:
                             productList.delete();
+                            break;
+                        case 3:
+                           customerList.delete();
                             break;
                         default:
                             System.out.println("Error, try againt !.");
@@ -124,6 +144,7 @@ public class FashionShopList {
                 case 6:
                     System.out.println("1. Find employee");
                     System.out.println("2. Find product");
+                    System.out.println("3. Find customer");
                     choice = sc.nextInt();
                     switch (choice){
                         case 1:
@@ -131,6 +152,9 @@ public class FashionShopList {
                             break;
                         case 2:
                             productList.find();
+                            break;
+                        case 3:
+                            customerList.find();
                             break;
                         default:
                             System.out.println("Error, try againt !.");
@@ -149,7 +173,7 @@ public class FashionShopList {
         } while (choose != 7);
     }
     public void menuEmployee()
-    {
+    { readE();
         do {
             System.out.println("1. Input ");
             System.out.println("2. Output ");
@@ -182,18 +206,69 @@ public class FashionShopList {
                     productList.display();
                     break;
                 case 3:
-                    productList.add();
+                    System.out.println("1. Add product");
+                    System.out.println("2. Add customer");
+                    choice = sc.nextInt();
+                    switch (choice){
+                        case 1:
+                            productList.add();
+                            break;
+                        case 2:
+                            customerList.add();
+                            break;
+                        default:
+                            System.out.println("Error, try againt !.");
+                            continue;
+                    }
                     break;
                 case 4:
-                    productList.editbyid();
+                    System.out.println("1. Edit product");
+                    System.out.println("2. Edit customer");
+                    choice = sc.nextInt();
+                    switch (choice){
+                        case 1:
+                            productList.editbyid();
+                            break;
+                        case 2:
+                            customerList.editById();
+                            break;
+                        default:
+                            System.out.println("Error, try againt !.");
+                            continue;
+                    }
                     break;
                 case 5:
-                    productList.delete();
+                    System.out.println("1. Delete product");
+                    System.out.println("2. Delete customer");
+                    choice = sc.nextInt();
+                    switch (choice){
+                        case 1:
+                            productList.delete();
+                            break;
+                        case 2:
+                            customerList.delete();
+                            break;
+                        default:
+                            System.out.println("Error, try againt !.");
+                            continue;
+                    }
                     break;
                 case 6:
-                    productList.find();
+                    System.out.println("1. Find product");
+                    System.out.println("2. Find customer");
+                    choice = sc.nextInt();
+                    switch (choice){
+                        case 1:
+                            productList.find();
+                            break;
+                        case 2:
+                            customerList.find();
+                            break;
+                        default:
+                            System.out.println("Error, try againt !.");
+                            continue;
+                    }
                     break;
-
                 case 7:
                     System.out.println("Exit !!!!");
                     break;

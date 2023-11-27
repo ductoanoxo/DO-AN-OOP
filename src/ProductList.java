@@ -6,16 +6,10 @@ import java.util.*;
 
 public class ProductList implements method {
     Scanner sc = new Scanner(System.in);
-    ArrayList<Product> ProductList = new ArrayList<>();
+    ArrayList<Product> ProductList = new ArrayList<>(); // khởi tạo list với arraylist chứa các đối tượng kiểu Product
     Clothing cl = new Clothing();
     Accessories ac = new Accessories();
     int quantity;
-
-
-    public ArrayList<Product> checkarray()
-    {
-        return ProductList;
-    }
 
     public void input() {
         System.out.print("How many products do you want to import?");
@@ -26,17 +20,17 @@ public class ProductList implements method {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
-                    ProductList.add(i, new Clothing());
+                    ProductList.add( new Clothing());      // khởi tạo đối tượng rồi thêm vào danh sách
                     break;
                 case 2:
-                    ProductList.add(i, new Accessories());
+                    ProductList.add( new Accessories());
                     break;
                 default:
                     System.out.println("Error, try againt !.");
                     i--; // Quay lại nhập lựa chọn
                     continue;
             }
-            ProductList.get(i).input();
+            ProductList.get(i).input();  // truy cập đến phương thức input của các đối tượng trong mảng
         }
 
     }
@@ -53,7 +47,7 @@ public class ProductList implements method {
         } else {
             for (Product product : ProductList) {
                 if (product instanceof Clothing) {
-                    Clothing clothing = (Clothing) product;
+                    Clothing clothing = (Clothing) product;   // ép kiểu product từ lớp cha trong productlist thành kiểu con
                     System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n",
                             clothing.getProductId(), clothing.getProductName(),
                             clothing.getPrice(), clothing.getMaterial(), clothing.getSize(), clothing.getColor(),clothing.getStyle(),clothing.getQuantity(), "");
@@ -74,7 +68,7 @@ public class ProductList implements method {
         } else {
             for (Product product : ProductList) {
                 if (product instanceof Accessories) {
-                    Accessories accessories = (Accessories) product;
+                    Accessories accessories = (Accessories) product; // ép kiểu product từ lớp cha trong productlist thành kiểu con
                     System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-20s | %-15s |\n",
                             accessories.getProductId(), accessories.getProductName(),
                             accessories.getPrice(), accessories.getMaterial(), accessories.getSize(), accessories.getType(),accessories.getQuantity());
@@ -89,22 +83,42 @@ public class ProductList implements method {
 
 
     public void editbyid() {
-        System.out.println("What kind of product do you want to Edit?");
-        System.out.println("1. Clothing\n2. Accessories");
-        int choice = sc.nextInt();
-        sc.nextLine(); // Consume the newline character
+        int choice;
 
-        System.out.print("Enter ID: ");
-        String id = sc.nextLine();
-        for (Product product : ProductList)
-        {
-            if ( isMatchingProduct(product,choice,id))
-            {
-                product.input();
+        do {
+            System.out.println("What kind of employee do you want to find?");
+            System.out.println("1. Clothing\n2. Accessories");
+            choice = sc.nextInt();
+            sc.nextLine(); // Consume the newline character
+
+            if (choice != 1 && choice != 2) {
+                System.out.println("Invalid choice. Please enter 1 or 2.");
             }
-        }
-        System.out.println("Product with ID " + id + " not found.");
+
+        } while (choice != 1 && choice != 2);
+
+        boolean idFound;
+
+        do {
+            System.out.print("Enter ID: ");
+            String id = sc.nextLine();
+            idFound = false;
+
+            for (Product product :ProductList) {
+                if (isMatchingProduct(product, choice, id)) {
+                    product.input();
+                    idFound = true;
+                    break; // Thoát khỏi vòng lặp khi tìm thấy ID
+                }
+            }
+
+            if (!idFound) {
+                System.out.println("Employee with ID " + id + " not found. Please try again.");
+            }
+
+        } while (!idFound);
     }
+
     public void add()
     {
         System.out.print("How many products do you want to add?");
@@ -132,46 +146,82 @@ public class ProductList implements method {
 
     }
     public void delete() {
-        System.out.println("What kind of products do you want to delete?");
-        System.out.println("1. Clothing\n2. Accessories");
-        int choice = sc.nextInt();
-        sc.nextLine(); // Consume the newline character
+        int choice;
 
-        System.out.print("Enter ID: ");
-        String id = sc.nextLine();
+        do {
+            System.out.println("What kind of employee do you want to find?");
+            System.out.println("1. Clothing\n2. Accessories");
+            choice = sc.nextInt();
+            sc.nextLine();
 
-        for (Product product : ProductList) {
-            if (isMatchingProduct(product, choice, id)) {
-                ProductList.remove(product);
-                System.out.println("Product has been deleted.");
-                writeToFile("Clothing.txt","Accessories.txt");
-                return;
+            if (choice != 1 && choice != 2) {
+                System.out.println("Invalid choice. Please enter 1 or 2.");
             }
-        }
-        System.out.println("Product with ID " + id + " not found.");
+
+        } while (choice != 1 && choice != 2);
+
+        boolean idFound;
+
+        do {
+            System.out.print("Enter ID: ");
+            String id = sc.nextLine();
+            idFound = false;
+
+            for (Product product :ProductList) {
+                if (isMatchingProduct(product, choice, id)) {
+                    ProductList.remove(product);
+                    idFound = true;
+                    break; // Thoát khỏi vòng lặp khi tìm thấy ID
+                }
+            }
+
+            if (!idFound) {
+                System.out.println("Employee with ID " + id + " not found. Please try again.");
+            }
+
+        } while (!idFound);
     }
-    public void find()
-    {
-        System.out.println("What kind of products do you want to find?");
-        System.out.println("1 .Clothing\n2 .Accessories");
-        int choice = sc.nextInt();
-        sc.nextLine(); // Consume the newline character
-        System.out.print("Enter ID: ");
-        String id = sc.nextLine();
-        for (Product product : ProductList) {
-            if (isMatchingProduct(product, choice, id)) {
-                product.display();
+
+    public void find() {
+        int choice;
+
+        do {
+            System.out.println("What kind of employee do you want to find?");
+            System.out.println("1. Clothing\n2. Accessories");
+            choice = sc.nextInt();
+            sc.nextLine(); // Consume the newline character
+
+            if (choice != 1 && choice != 2) {
+                System.out.println("Invalid choice. Please enter 1 or 2.");
             }
 
-        }
+        } while (choice != 1 && choice != 2);
 
-        System.out.println("Product with ID " + id + " not found.");
+        boolean idFound;
 
+        do {
+            System.out.print("Enter ID: ");
+            String id = sc.nextLine();
+            idFound = false;
+
+            for (Product product :ProductList) {
+                if (isMatchingProduct(product, choice, id)) {
+                    product.display();
+                    idFound = true;
+                    break; // Thoát khỏi vòng lặp khi tìm thấy ID
+                }
+            }
+
+            if (!idFound) {
+                System.out.println("Employee with ID " + id + " not found. Please try again.");
+            }
+
+        } while (!idFound);
     }
     private boolean isMatchingProduct(Product product, int choice, String id) {
         return (choice == 1 && product instanceof Clothing && product.getProductId().equals(id)) ||
                 (choice == 2 && product instanceof Accessories && product.getProductId().equals(id));
-    }
+    } // hàm này để tìm thấy sản phẩm khi có lựa chọn 1 và 2 trong các hàm tìm id
 
 
     public void writeToFile(String clothingFileName, String accessoriesFileName) {
@@ -181,14 +231,14 @@ public class ProductList implements method {
             Files.write(Paths.get(accessoriesFileName), new byte[0]);
 
             // Ghi dữ liệu mới vào tệp
-            try (FileOutputStream clothingFos = new FileOutputStream(clothingFileName, true);
+            try (FileOutputStream clothingFos = new FileOutputStream(clothingFileName, true); // mở fos để ghi vào file name
                  FileOutputStream accessoriesFos = new FileOutputStream(accessoriesFileName, true)) {
 
-                for (Product product : ProductList) {
-                    String line = product.getFileLine() + "\n"; // Thêm ký tự xuống dòng
-                    byte[] b = line.getBytes(StandardCharsets.UTF_8);
+                for (Product product : ProductList) {              // duyệt qua danh sách sản phẩm
+                    String line = product.getFileLine() + "\n"; // Gọi phương thức getFileLine của mỗi product
+                    byte[] b = line.getBytes(StandardCharsets.UTF_8); // chuyển đổi dòng thành mảng byte
 
-                    if (product instanceof Clothing) {
+                    if (product instanceof Clothing) { // kiểm tra xem product đó có phải clothing không
                         clothingFos.write(b);
                     } else if (product instanceof Accessories) {
                         accessoriesFos.write(b);
@@ -207,22 +257,22 @@ public class ProductList implements method {
     }
 
     public void readFromFile(String ClothingFileName, String AccessoriesFileName) {
-        try (BufferedReader salegentReader = new BufferedReader(new FileReader(ClothingFileName));
-             BufferedReader storekeeperReader = new BufferedReader(new FileReader(AccessoriesFileName))) {
+        try (BufferedReader clReader = new BufferedReader(new FileReader(ClothingFileName));
+             BufferedReader clkeeperReader = new BufferedReader(new FileReader(AccessoriesFileName))) {
 
             // Read clothing file
             String clline;
-            while ((clline = salegentReader.readLine()) != null) {
-                if (!clline.isEmpty()) {
-                    Clothing cl = new Clothing();
-                    cl.Parse(clline);
-                    ProductList.add(cl);
+            while ((clline = clReader.readLine()) != null) {   // đọc từ dòng từ tệp
+                if (!clline.isEmpty()) { // Kiểm tra xem dòng đọc được có rỗng hay không trước khi xử lý.
+                    Clothing cl = new Clothing(); // khởi tạo biến cl từ kiểu dữ liệu clothing
+                    cl.Parse(clline); // lầy từng phần tử từ hàm parse qua
+                    ProductList.add(cl); // thêm vào mảng
                 }
             }
 
             // Read accessories file
             String acline;
-            while ((acline = storekeeperReader.readLine()) != null) {
+            while ((acline = clReader.readLine()) != null) {
                 if (!acline.isEmpty()) {
                     Accessories ac = new Accessories();
                     ac.Parse(acline);
@@ -230,9 +280,7 @@ public class ProductList implements method {
                 }
             }
 
-        } catch (FileNotFoundException ex) {
-            throw new RuntimeException(ex);
-        } catch (IOException ex) {
+        } catch (IOException ex) { // ngoại lệ thường được sử dụng với các lỡi liên quan tới output và input
             throw new RuntimeException(ex);
         }
     }

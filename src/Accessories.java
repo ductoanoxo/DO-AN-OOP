@@ -45,7 +45,7 @@ public class Accessories extends Product {
     }
 
     public void display() {
-        System.out.print(this);
+        System.out.print(toString());
     }
 
     @Override
@@ -59,8 +59,8 @@ public class Accessories extends Product {
     }
     public void Parse(String line)
     {
-        String[] params = line.split(",");
-        super.Parse(line);
+        String[] params = line.split(","); // chia chuỗi
+        super.Parse(line); // kế thừa từ hàm Parse của product
         material = params[5];
         type = params[6];
     }

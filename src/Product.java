@@ -89,27 +89,23 @@ public class Product {
     @Override
     public String toString()
     {
-        return "Id :" + productId +comba+"Name :" + productName+comba+"Price :" + price +comba+"Quantity :" +quantity +comba+"Size :"+size+comba;
+        return "Id :" + productId +comba+"Name :" + productName+comba+"Price :" + price +comba+"Quantity :" +quantity +comba+"Size :"+size+comba; // trả về chuỗi để in thông tin riêng
     }
     public String getFileLine()
     {
-        return  productId +comba+ productName+comba+ price +comba+quantity +comba+size+comba;
+        return  productId +comba+ productName+comba+ price +comba+quantity +comba+size+comba; // trả về chuỗi để ghi file
     }
     public void Parse(String line)
     {
-        try {
-            String[] params = line.split(",");
-            productId = params[0];
+
+            String[] params = line.split(","); // chia chuỗi thành mảng các phần tử
+            productId = params[0];                    // gán cho các phần tử
             productName = params[1];
             price = parseInt(params[2]);
             quantity = parseInt(params[3]);
             size = params[4];
-        }
-        catch (ArrayIndexOutOfBoundsException ignored)
-        {
-        }finally {
 
-        }
+
     }
 
 

@@ -77,31 +77,24 @@ public class Person {
         PhoneNumber = sc.nextLine();
     }
     public void display() {
-        System.out.print(this);
+        System.out.print(toString());
     }
     @Override
     public String toString()
     {
-        return "Id :" + PersonName +comba+"Name :" + PersonName+comba+"Sex :" + Sex +comba+"Address :" +Address +comba+"Phone number :"+PhoneNumber+comba;
+        return "Id :" + PersonName +comba+"Name :" + PersonName+comba+"Sex :" + Sex +comba+"Address :" +Address +comba+"Phone number :"+PhoneNumber+comba; // trả về chuỗi để in thông tin riêng
     }
     public String getFileLine()
     {
-        return  PersonId +comba+ PersonName+comba+ Sex +comba+Address +comba+PhoneNumber+comba;
+        return  PersonId +comba+ PersonName+comba+ Sex +comba+Address +comba+PhoneNumber+comba; // trả về chuỗi để ghi file
     }
     public void Parse(String line)
     {
-        try {
-            String[] params = line.split(",");
-            PersonId = params[0];
+            String[] params = line.split(","); // chia chuỗi thành mảng các phần tử
+            PersonId = params[0];                      // gán cho các phần tử
             PersonName = params[1];
             Sex = (params[2]);
             Address = (params[3]);
             PhoneNumber = params[4];
-        }
-        catch (ArrayIndexOutOfBoundsException ignored)
-        {
-        }finally {
-
-        }
     }
 }

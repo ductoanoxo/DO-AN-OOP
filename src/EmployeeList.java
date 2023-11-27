@@ -37,40 +37,83 @@ public class EmployeeList implements method {
         return  (choice == 1 && employee instanceof SaleAgent && employee.getPersonId().equals(id)) ||
                 (choice == 2 && employee instanceof Storekeeper && employee.getPersonId().equals(id));
     }
-    public void find()
-    {
-        System.out.println("What kind of employee do you want to find?");
-        System.out.println("1. SaleAgent\n2. StoreKeeper");
-        int choice = sc.nextInt();
-        sc.nextLine(); // Consume the newline character
-        System.out.print("Enter ID: ");
-        String id = sc.nextLine();
-        for ( Employee employee : EmployeeList)
-        {
-            if (isMatchingfound(employee,choice,id))
-            {
-                employee.display();
+    public void find() {
+        int choice;
+
+        do {
+            System.out.println("What kind of employee do you want to find?");
+            System.out.println("1. SaleAgent\n2. StoreKeeper");
+            choice = sc.nextInt();
+            sc.nextLine(); // Consume the newline character
+
+            if (choice != 1 && choice != 2) {
+                System.out.println("Invalid choice. Please enter 1 or 2.");
             }
-        }
-    }
-    public void delete()
-    {
-        System.out.println("What kind of employee do you want to Delete?");
-        System.out.println("1.SaleAgent\n2. StoreKeeper");
-        int choice = sc.nextInt();
-        sc.nextLine(); // Consume the newline character
-        System.out.print("Enter ID: ");
-        String id = sc.nextLine();
-            for ( Employee employee : EmployeeList)
-            {
-                if (isMatchingfound(employee,choice,id))
-                {
-                    EmployeeList.remove(employee);
-                    System.out.print("Person.Employee has been remove ");
-                    writeToFile("SaleAgent.txt","StoreKeeper.txt");
+
+        } while (choice != 1 && choice != 2);
+
+        boolean idFound;
+
+        do {
+            System.out.print("Enter ID: ");
+            String id = sc.nextLine();
+            idFound = false;
+
+            for (Employee employee : EmployeeList) {
+                if (isMatchingfound(employee, choice, id)) {
+                    employee.display();
+                    idFound = true;
+                    break; // Thoát khỏi vòng lặp khi tìm thấy ID
                 }
             }
+
+            if (!idFound) {
+                System.out.println("Employee with ID " + id + " not found. Please try again.");
+            }
+
+        } while (!idFound);
     }
+
+
+    public void delete() {
+        int choice;
+
+        do {
+            System.out.println("What kind of employee do you want to Delete?");
+            System.out.println("1. SaleAgent\n2. StoreKeeper");
+            choice = sc.nextInt();
+            sc.nextLine(); // Consume the newline character
+
+            if (choice != 1 && choice != 2) {
+                System.out.println("Invalid choice. Please enter 1 or 2.");
+            }
+
+        } while (choice != 1 && choice != 2);
+
+        boolean idFound;
+
+        do {
+            System.out.print("Enter ID: ");
+            String id = sc.nextLine();
+            idFound = false;
+
+            for (Employee employee : EmployeeList) {
+                if (isMatchingfound(employee, choice, id)) {
+                    EmployeeList.remove(employee);
+                    System.out.println("Employee has been removed.");
+                    idFound = true;
+                    writeToFile("SaleAgent.txt", "StoreKeeper.txt");
+                    break; // Thoát khỏi vòng lặp khi xóa nhân viên
+                }
+            }
+
+            if (!idFound) {
+                System.out.println("Employee with ID " + id + " not found. Please try again.");
+            }
+
+        } while (!idFound);
+    }
+
     public void add()
     {
         System.out.print("How many employee you want to add?");
@@ -96,25 +139,47 @@ public class EmployeeList implements method {
         writeToFile("SaleAgent.txt","StoreKeeper.txt");
     }
     public void editbyid() {
-        System.out.println("What kind of employee do you want to Edit?");
-        System.out.println("1. SaleAgent\n2. StoreKeeper");
-        int choice = sc.nextInt();
-        sc.nextLine(); // Consume the newline character
-        System.out.print("Enter ID: ");
-        String id = sc.nextLine();
-        for (Employee employee : EmployeeList)
-        {
-            if ( isMatchingfound(employee,choice,id))
-            {
-                employee.input();
+        int choice;
+
+        do {
+            System.out.println("What kind of employee do you want to Edit?");
+            System.out.println("1. SaleAgent\n2. StoreKeeper");
+            choice = sc.nextInt();
+            sc.nextLine(); // Consume the newline character
+
+            if (choice != 1 && choice != 2) {
+                System.out.println("Invalid choice. Please enter 1 or 2.");
             }
-        }
-        System.out.println("Product with ID " + id + " not found.");
+
+        } while (choice != 1 && choice != 2);
+
+        boolean idFound;
+
+        do {
+            System.out.print("Enter ID: ");
+            String id = sc.nextLine();
+            idFound = false;
+
+            for (Employee employee : EmployeeList) {
+                if (isMatchingfound(employee, choice, id)) {
+                    employee.input();
+                    idFound = true;
+                    break;
+                }
+            }
+
+            if (!idFound) {
+                System.out.println("Employee with ID " + id + " not found. Please try again.");
+            }
+
+        } while (!idFound);
     }
+
+
     public void display() {
         System.out.println("------------------------------------------------------------------SALEAGENT LIST------------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-20s |\n",
+        System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n",
                 "ID", "Name", "Sex", "Address", "Phone number", "Work shift", "Salary","Product quantity");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
 
@@ -133,11 +198,11 @@ public class EmployeeList implements method {
 
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
 
-        System.out.println("----------------------------------------------------------------STOREKEEPER LIST-----------------------------------------------------------------");
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-20s |\n",
+        System.out.println("----------------------------------------------------------------STOREKEEPER LIST----------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-20s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n",
                 "ID", "Name", "Sex", "Address", "Phone number", "Work shift", "Salary","Number of day");
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         if (EmployeeList.isEmpty()) {
             System.out.println("No accessories products to display.");
@@ -145,7 +210,7 @@ public class EmployeeList implements method {
             for (Employee employee : EmployeeList) {
                 if (employee instanceof Storekeeper) {
                     Storekeeper storekeeper = (Storekeeper)employee;
-                    System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-20s |\n",
+                    System.out.printf("| %-15s | %-20s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n",
                             storekeeper.getPersonId(), storekeeper.getPersonName(),
                             storekeeper.getSex(), storekeeper.getAddress(),storekeeper.getPhoneNumber(),storekeeper.getWorkshift(), storekeeper.getSalary(), storekeeper.getNumberofday(),"");
                 }

@@ -1,4 +1,10 @@
-1,Dây chuyền,2000,2,M,Bạc,Dây chuyền heo
+1,Dây Chuyền,2000,2,M,Bạc,Dây chuyền đính đá
 
-2,Dây chuyền,2000,2,M,Bạc,Dây chuyền heo1
+2,Nhẫn,2000,2,M,Bạc,Nhẫn trái tim
+
+3,Bông tai,2000,2,M,Bạc,Bông tai pandora
+
+4,Lắc,2000,2,M,Bạc,Lắc pandora
+
+
 
