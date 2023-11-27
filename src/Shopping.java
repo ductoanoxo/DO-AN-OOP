@@ -3,18 +3,20 @@ import java.util.Scanner;
 
 public class Shopping {
     private int choice;
-    private ArrayList<Product> shoppingList = new ArrayList<>();
-    private Scanner sc = new Scanner(System.in);
-    private ProductList productList = new ProductList();
+    ArrayList<Product> shoppingList = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
+        ProductList productList = new ProductList();
 
-    private ArrayList<Bill>billList = new ArrayList<>();
-
-    public void readshop() {
-        productList.readFromFile("Clothing.txt", "Accessories.txt");
+    ArrayList<Bill>billList = new ArrayList<>();
+    CustomerList customerList = new CustomerList();
+    public void readshop()
+    {
+        productList.readFromFile("Clothing.txt","Accessories.txt");
         productList.display();
     }
 
-    public void menu() {
+    public void menushop()
+    {readshop();
         do {
             System.out.println("Welcome to my fashion shop <3");
             System.out.println("1. Buy");
@@ -31,12 +33,11 @@ public class Shopping {
                     System.out.println("Error, try again!.");
                     continue;
             }
-        } while (choice != 3);
-    }
+        } while (choice != 2);
 
+    }
     public void displayShoppingList() {
         System.out.println("Shopping List:");
-
         // Clothing List
         System.out.println("------------------------------------------------------------------CLOTHING LIST------------------------------------------------------------------");
         boolean clothingFound = false;
@@ -93,8 +94,9 @@ public class Shopping {
             if (continueShopping) {
                 System.out.print("Do you want to continue shopping? (yes/no): ");
                 String continueChoice = sc.next().toLowerCase();
-                if (continueChoice.equals("n")) {
+                if (continueChoice.equals("no")) {
                     continueShopping = false;
+                    customerList.input();
                     createBill();
                     DisplayBill();
                     System.out.println("Thank you for shopping!");
@@ -109,10 +111,10 @@ public class Shopping {
         String id = sc.nextLine();
         System.out.print("Enter quantity: ");
         int quantity = sc.nextInt();
-
         boolean productFound = false;
 
         for (Product product : productList.ProductList) {
+
             if (product.getProductId().equals(id) && product instanceof Clothing) {
                 int updatedQuantity = product.getQuantity() - quantity;
                 if (updatedQuantity >= 0) {
@@ -142,9 +144,7 @@ public class Shopping {
         String id = sc.nextLine();
         System.out.print("Enter quantity: ");
         int quantity = sc.nextInt();
-
         boolean productFound = false;
-
         for (Product product : productList.ProductList) {
             if (product.getProductId().equals(id) && product instanceof Accessories) {
                 int updatedQuantity = product.getQuantity() - quantity;
@@ -159,7 +159,7 @@ public class Shopping {
                 } else {
                     System.out.println("Not enough stock available for the selected accessories.");
                 }
-                productFound = true;
+                //productFound = true;
                 break;
             }
         }
@@ -172,7 +172,7 @@ public class Shopping {
         Bill bill = new Bill();
         bill.input();
         for (Product product: shoppingList) {
-            int productId = Integer.parseInt(product.getProductId());
+            String productId = product.getProductId();
             int quantity = product.getQuantity();
             if (product instanceof Clothing) {
                 // Lấy thông tin từ mỗi phần tử
@@ -183,7 +183,7 @@ public class Shopping {
                 String employeeId = bill.getEmployeeId();
                 bill.setEmployeeId(employeeId);
                 bill.setProductid(String.valueOf(productId));
-             bill.setProducttype(producttype);
+                bill.setProducttype(producttype);
                 bill.setQuantity(String.valueOf(quantity));
 
                 // Thêm đối tượng Bill vào danh sách hoặc làm điều gì đó khác với nó
@@ -205,6 +205,7 @@ public class Shopping {
             }
         }
     }
+
 
     public void DisplayBill()
     {

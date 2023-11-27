@@ -3,6 +3,8 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 public class Product {
+
+
     private String productId;
     private String productName;
     private int price;
@@ -32,9 +34,7 @@ public class Product {
         this.size = size;
     }
 
-    public String getProductId() {
-        return productId;
-    }
+
 
     public String getProductName() {
         return productName;
@@ -50,6 +50,10 @@ public class Product {
 
     public String getSize() {
         return size;
+    }
+
+    public String getProductId() {
+        return productId;
     }
 
     public Product() {
@@ -80,7 +84,7 @@ public class Product {
     }
 
     public void display() {
-      System.out.print(this);
+        System.out.print(this);
     }
     @Override
     public String toString()
@@ -101,7 +105,7 @@ public class Product {
             quantity = parseInt(params[3]);
             size = params[4];
         }
-        catch (ArrayIndexOutOfBoundsException ex)
+        catch (ArrayIndexOutOfBoundsException ignored)
         {
         }finally {
 

@@ -4,12 +4,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class ProductList {
+public class ProductList implements method {
     Scanner sc = new Scanner(System.in);
     ArrayList<Product> ProductList = new ArrayList<>();
     Clothing cl = new Clothing();
     Accessories ac = new Accessories();
     int quantity;
+
+
+    public ArrayList<Product> checkarray()
+    {
+        return ProductList;
+    }
 
     public void input() {
         System.out.print("How many products do you want to import?");
@@ -82,7 +88,7 @@ public class ProductList {
 
 
 
-    public void editProductbyid() {
+    public void editbyid() {
         System.out.println("What kind of product do you want to Edit?");
         System.out.println("1. Clothing\n2. Accessories");
         int choice = sc.nextInt();

@@ -7,8 +7,14 @@ public class FashionShopList {
     Shopping shopping = new Shopping();
     int choose;
     int choice;
-
-
+    public void readall() {
+        employeeList.readFromFile("SaleAgent.txt", "StoreKeeper.txt");
+        productList.readFromFile("Clothing.txt", "Accessories.txt");
+        customerList.readFromFile("Customer.txt");
+        employeeList.display();
+        productList.display();
+        customerList.display();
+    }
     public void menu()
     {
         do {
@@ -26,8 +32,7 @@ public class FashionShopList {
                     menuEmployee();
                     break;
                 case 3:
-                    shopping.readshop();
-                    shopping.menu();
+                    shopping.menushop();
                     choice = 3; // Update choice to exit the loop
                     break;
                 case 4:
@@ -40,11 +45,7 @@ public class FashionShopList {
         } while (choice != 4);
     }
     public void menuAdmin()
-    {
-
-        ProductList productList = new ProductList();
-        Scanner sc = new Scanner(System.in);
-
+    { readall();
         do {
             System.out.println("1. Input");
             System.out.println("2. Display");
@@ -52,9 +53,7 @@ public class FashionShopList {
             System.out.println("4. Edit by Id");
             System.out.println("5. Delete");
             System.out.println("6. Find");
-            System.out.println("7. SaveFile");
-            System.out.println("8. ReadFile");
-            System.out.println("9. Exit");
+            System.out.println("7. Exit");
             System.out.println("Enter your selection:");
             choose = sc.nextInt();
 
@@ -96,10 +95,10 @@ public class FashionShopList {
                     choice = sc.nextInt();
                     switch (choice){
                         case 1:
-                            employeeList.editEmployeebyid();
+                            employeeList.editbyid();
                             break;
                         case 2:
-                            productList.editProductbyid();
+                            productList.editbyid();
                             break;
                         default:
                             System.out.println("Error, try againt !.");
@@ -112,7 +111,7 @@ public class FashionShopList {
                     choice = sc.nextInt();
                     switch (choice){
                         case 1:
-                            employeeList.Delete();
+                            employeeList.delete();
                             break;
                         case 2:
                             productList.delete();
@@ -138,32 +137,8 @@ public class FashionShopList {
                             continue;
                     }
                     break;
+
                 case 7:
-                    System.out.println("1. Save file employee");
-                    System.out.println("2. Save file product");
-                    System.out.println("3. Save all");
-                    choice = sc.nextInt();
-                    switch (choice){
-                        case 1:
-                        employeeList.writeToFile("SaleAgent.txt","StoreKeeper.txt");
-                        break;
-                        case 2:
-                        productList.writeToFile("Clothing.txt","Accessories.txt");
-                        break;
-                        case 3 :
-                        employeeList.writeToFile("SaleAgent.txt","StoreKeeper.txt");
-                        productList.writeToFile("Clothing.txt","Accessories.txt");
-                        break;
-                        default:
-                            System.out.println("Error, try againt !.");
-                            continue;
-                    }
-                    break;
-                case 8:
-                    employeeList.readFromFile("SaleAgent.txt","StoreKeeper.txt");
-                    productList.readFromFile("Clothing.txt","Accessories.txt");
-                    break;
-                case 9:
                     System.out.println("Exit !!!!");
                     break;
                 default:
@@ -171,14 +146,10 @@ public class FashionShopList {
                     break;
             }
 
-        } while (choose != 9);
+        } while (choose != 7);
     }
     public void menuEmployee()
     {
-        int choose;
-        ProductList productList = new ProductList();
-        Scanner sc = new Scanner(System.in);
-
         do {
             System.out.println("1. Input ");
             System.out.println("2. Output ");
@@ -186,9 +157,7 @@ public class FashionShopList {
             System.out.println("4. Edit by Id");
             System.out.println("5. Delete");
             System.out.println("6. Find");
-            System.out.println("7. SaveFile");
-            System.out.println("8. ReadFile");
-            System.out.println("9. Exit");
+            System.out.println("7. Exit");
             System.out.println("Enter your selection:");
             choose = sc.nextInt();
 
@@ -216,7 +185,7 @@ public class FashionShopList {
                     productList.add();
                     break;
                 case 4:
-                    productList.editProductbyid();
+                    productList.editbyid();
                     break;
                 case 5:
                     productList.delete();
@@ -224,23 +193,16 @@ public class FashionShopList {
                 case 6:
                     productList.find();
                     break;
+
                 case 7:
-                    productList.writeToFile("Clothing.txt","Accessories.txt");
-                    break;
-                case 8:
-                    productList.readFromFile("Clothing.txt","Accessories.txt");
-                    break;
-                case 9:
                     System.out.println("Exit !!!!");
                     break;
                 default:
                     System.out.println("Error! Try again");
                     break;
             }
-
-        } while (choose != 9);
+        } while (choose != 7);
     }
-
 }
 
 

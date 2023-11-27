@@ -14,7 +14,7 @@ public class Customer extends Person {
         super.input();
     }
     public void display() {
-        System.out.print(this);
+        System.out.print(toString());
     }
     @Override
     public String toString()

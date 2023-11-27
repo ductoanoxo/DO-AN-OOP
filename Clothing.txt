@@ -1,2 +1,4 @@
-1,Áo,2000,4,M,Bạc,Trắng,Áo heo
-2,Áo,2000,4,M,Bạc,Trắng,Áo heo
+1,Áo,2000,2,M,Xanh,Đỏ,Áo heo
+
+2,Quần,2000,2,L,kaki,Be,Quần tây
+

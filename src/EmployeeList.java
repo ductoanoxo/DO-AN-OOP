@@ -3,7 +3,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-public class EmployeeList {
+public class EmployeeList implements method {
     Scanner sc = new Scanner(System.in);
     ArrayList<Employee> EmployeeList = new ArrayList<>();
 
@@ -53,7 +53,7 @@ public class EmployeeList {
             }
         }
     }
-    public void Delete()
+    public void delete()
     {
         System.out.println("What kind of employee do you want to Delete?");
         System.out.println("1.SaleAgent\n2. StoreKeeper");
@@ -95,7 +95,7 @@ public class EmployeeList {
         }
         writeToFile("SaleAgent.txt","StoreKeeper.txt");
     }
-    public void editEmployeebyid() {
+    public void editbyid() {
         System.out.println("What kind of employee do you want to Edit?");
         System.out.println("1. SaleAgent\n2. StoreKeeper");
         int choice = sc.nextInt();
@@ -210,8 +210,6 @@ public class EmployeeList {
                 }
             }
 
-        } catch (FileNotFoundException ex) {
-            throw new RuntimeException(ex);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

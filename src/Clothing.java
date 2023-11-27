@@ -31,8 +31,8 @@ public class Clothing extends Product {
         style = "";
     }
 
-    public Clothing(String productId, String productName, int price, int quantity, String material, String color, String style) {
-        super(productId, productName, price, quantity);
+    public Clothing(String productName, String productId, int price, int quantity, String material, String color, String style) {
+        super(productName, productId, price, quantity);
         this.material = material;
         this.color = color;
         this.style = style;
@@ -69,4 +69,3 @@ public class Clothing extends Product {
         style = params[7];
     }
 }
-

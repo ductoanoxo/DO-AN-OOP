@@ -9,13 +9,10 @@ public class CustomerList {
     Scanner sc = new Scanner (System.in);
     public void input()
     {
-        System.out.print("How many customer u want to add?");
-        int quantity = sc.nextInt();
-        for ( int i=0; i< quantity ; i++)
-        {
-            CustomerList.add(new Customer());
-            CustomerList.get(i).input();
-        }
+        Customer customer = new Customer();
+        customer.input();
+        CustomerList.add(customer);
+        writeToFile("Customer.txt");
     }
     public void find()
     {
@@ -85,18 +82,38 @@ public class CustomerList {
 
     public void readFromFile(String customerfile) {
         try (BufferedReader cusreader = new BufferedReader(new FileReader( customerfile)))
-              {
+        {
             // Read cus file
             String cusline;
             while ((cusline = cusreader.readLine()) != null) {
                 if (!cusline.isEmpty()) {
                     Customer cus = new Customer();
                     cus.Parse(cusline);
-                   CustomerList.add(cus);
+                    CustomerList.add(cus);
                 }
             }
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+    public void display()
+
+    {
+        System.out.println("------------------------------------------------------------------CUSTOMER LIST------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s |\n",
+                "Customer ID", "Name", "Sex", "Address", "Phone");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
+
+        if (CustomerList.isEmpty()) {
+            System.out.println("No clothing products to display.");
+        } else {
+            for (Customer customer : CustomerList) {
+                System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s |\n",
+                        customer.getPersonId(),  customer.getPersonName(),
+                        customer.getSex(),  customer.getAddress(), customer.getPhoneNumber(), "");
+            }
+        }
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 }
