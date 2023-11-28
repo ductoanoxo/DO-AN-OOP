@@ -7,8 +7,6 @@ import java.util.*;
 public class ProductList implements method {
     Scanner sc = new Scanner(System.in);
     ArrayList<Product> ProductList = new ArrayList<>(); // khởi tạo list với arraylist chứa các đối tượng kiểu Product
-    Clothing cl = new Clothing();
-    Accessories ac = new Accessories();
     int quantity;
 
     public void input() {
@@ -68,7 +66,7 @@ public class ProductList implements method {
         } else {
             for (Product product : ProductList) {
                 if (product instanceof Accessories) {
-                    Accessories accessories = (Accessories) product; // ép kiểu product từ lớp cha trong productlist thành kiểu con
+                    Accessories accessories = (Accessories) product;   // ép kiểu product từ lớp cha trong productlist thành kiểu con
                     System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-20s | %-15s |\n",
                             accessories.getProductId(), accessories.getProductName(),
                             accessories.getPrice(), accessories.getMaterial(), accessories.getSize(), accessories.getType(),accessories.getQuantity());
@@ -258,7 +256,7 @@ public class ProductList implements method {
 
     public void readFromFile(String ClothingFileName, String AccessoriesFileName) {
         try (BufferedReader clReader = new BufferedReader(new FileReader(ClothingFileName));
-             BufferedReader clkeeperReader = new BufferedReader(new FileReader(AccessoriesFileName))) {
+             BufferedReader acReader = new BufferedReader(new FileReader(AccessoriesFileName))) {
 
             // Read clothing file
             String clline;
@@ -272,7 +270,7 @@ public class ProductList implements method {
 
             // Read accessories file
             String acline;
-            while ((acline = clReader.readLine()) != null) {
+            while ((acline = acReader.readLine()) != null) {
                 if (!acline.isEmpty()) {
                     Accessories ac = new Accessories();
                     ac.Parse(acline);

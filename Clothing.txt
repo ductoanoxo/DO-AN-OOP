@@ -1,8 +1,6 @@
 1,Áo,2000,2,M,Xanh,Đỏ,Áo heo
-
 2,Quần,2000,2,L,kaki,Be,Quần tây
 3,Áo khoác ,2000,2,M,Xanh,Đỏ,Áo khoác heo
-
 4,Quần jean,2000,2,L,kaki,Be,Quần jean tây
 
 
