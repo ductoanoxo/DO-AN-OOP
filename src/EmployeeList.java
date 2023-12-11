@@ -252,7 +252,7 @@ public class EmployeeList implements method {
     }
 
     public void readFromFile(String saleagentFileName, String storekeeperFileName) {
-        try (BufferedReader salegentReader = new BufferedReader(new FileReader(saleagentFileName));
+        try (BufferedReader salegentReader =  new BufferedReader(new FileReader(saleagentFileName));
              BufferedReader storekeeperReader = new BufferedReader(new FileReader(storekeeperFileName))) {
 
             // Read clothing file
@@ -279,5 +279,6 @@ public class EmployeeList implements method {
             throw new RuntimeException(ex);
         }
     }
+
 
 }

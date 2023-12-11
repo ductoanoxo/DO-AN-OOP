@@ -84,7 +84,7 @@ public class Product {
     }
 
     public void display() {
-        System.out.print(this);
+        System.out.print(toString());
     }
     @Override
     public String toString()

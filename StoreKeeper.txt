@@ -1,7 +1,4 @@
 1,Nguyễn Lê Nhật Minh,Nam,none,none,Chiều,2000,7
+
 2,Lê Ngọc Hiệp,Nam,none,none,Chiều,2000,7
-3,Ngô Tuấn Anh,Nam,none,none,Chiều,2000,7
-
-
-
 

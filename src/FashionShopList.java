@@ -8,17 +8,17 @@ public class FashionShopList {
     int choose;
     int choice;
     public void readall() {
-        employeeList.readFromFile("SaleAgent.txt", "StoreKeeper.txt");
-        productList.readFromFile("Clothing.txt", "Accessories.txt");
-        customerList.readFromFile("Customer.txt");
+        employeeList.readFromFile("./SaleAgent.txt", "./StoreKeeper.txt");
+        productList.readFromFile("./Clothing.txt", "./Accessories.txt");
+        customerList.readFromFile("./Customer.txt");
         employeeList.display();
         productList.display();
         customerList.display();
     }
     public void readE()
     {
-        productList.readFromFile("Clothing.txt", "Accessories.txt");
-        customerList.readFromFile("Customer.txt");
+        productList.readFromFile("./Clothing.txt", "./Accessories.txt");
+        customerList.readFromFile("./Customer.txt");
         productList.display();
         customerList.display();
     }

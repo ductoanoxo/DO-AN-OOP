@@ -62,7 +62,7 @@ public class ProductList implements method {
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------");
 
         if (ProductList.isEmpty()) {
-            System.out.println("No accessories products to display.");
+            System  .out.println("No accessories products to display.");
         } else {
             for (Product product : ProductList) {
                 if (product instanceof Accessories) {
@@ -267,7 +267,6 @@ public class ProductList implements method {
                     ProductList.add(cl); // thêm vào mảng
                 }
             }
-
             // Read accessories file
             String acline;
             while ((acline = acReader.readLine()) != null) {
@@ -282,6 +281,7 @@ public class ProductList implements method {
             throw new RuntimeException(ex);
         }
     }
+    
 
 
 }

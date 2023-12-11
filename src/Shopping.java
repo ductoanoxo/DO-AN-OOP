@@ -11,7 +11,7 @@ public class Shopping {
     CustomerList customerList = new CustomerList();
     public void readshop()
     {
-        productList.readFromFile("Clothing.txt","Accessories.txt");
+        productList.readFromFile("./Clothing.txt","./Accessories.txt");
         productList.display();
     }
 
@@ -73,7 +73,6 @@ public class Shopping {
             System.out.println("1. Clothing");
             System.out.println("2. Accessories");
             System.out.println("3. Exit!");
-
             choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -129,7 +128,6 @@ public class Shopping {
                     System.out.println("Not enough stock available for the selected clothing.");
                 }
                 productFound = true;
-                break;
             }
         }
 

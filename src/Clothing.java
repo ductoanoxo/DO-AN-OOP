@@ -48,7 +48,7 @@ public class Clothing extends Product {
         style = sc.nextLine();
     }
     public void display() {
-        System.out.print(this);
+        System.out.print(toString());
     }
 
     @Override
